@@ -2,7 +2,7 @@
 
 namespace App\Services\Job;
 
-use app\Models\Job;
+use App\Models\Job;
 
 class StoreJobService
 {

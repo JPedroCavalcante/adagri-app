@@ -6,15 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Job\IndexJobRequest;
 use App\Http\Requests\Job\StoreJobRequest;
 use App\Http\Requests\Job\UpdateJobRequest;
-use app\Models\Job;
+use App\Models\Job;
 use App\Services\Job\DeleteJobService;
 use App\Services\Job\IndexJobService;
+use App\Services\Job\FindJobByIdService;
 use App\Services\Job\StoreJobService;
 use App\Services\Job\UpdateJobService;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 
 class JobController extends Controller
@@ -29,6 +31,19 @@ class JobController extends Controller
         return view('jobs.index', compact('jobs'));
     }
 
+    public function show(int $id, FindJobByIdService $findJobByIdService)
+    {
+        $job = $findJobByIdService->run($id);
+        return response()->view('jobs.show', [
+            'job' => $job,
+        ]);
+    }
+
+    public function create(): Response
+    {
+        return response()->view('jobs.form');
+    }
+
     public function store(
         StoreJobRequest $storeJobRequest,
         StoreJobService $storeJobService,
@@ -36,23 +51,36 @@ class JobController extends Controller
     {
         $data = $storeJobRequest->validated();
         $storeJobService->run($data);
-        return redirect('/jobs');
+        return redirect('/jobs')->with('msg', 'Vaga criada!');
+    }
+
+    public function edit(
+        int                $id,
+        FindJobByIdService $findJobByIdService
+    ): Response
+    {
+        $job = $findJobByIdService->run($id);
+        return response()->view('jobs.form', [
+            'job' => $job,
+        ]);
     }
 
     public function update(
+        $id,
         UpdateJobRequest $updateJobRequest,
         UpdateJobService $updateJobService,
-        Job              $job,
+        findJobByIdService $findJobByIdService,
     ): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
+        $job = $findJobByIdService->run($id);
         $data = $updateJobRequest->validated();
         $job = $updateJobService->run($data, $job);
-        return view('jobs.edit', ['job' => $job]);
+        return view('jobs.form', ['job' => $job]);
     }
 
     public function destroy(
-        DeleteJobService $deleteJobService,
         int              $id,
+        DeleteJobService $deleteJobService
     ): Application|Redirector|RedirectResponse|\Illuminate\Contracts\Foundation\Application
     {
         $deleteJobService->run($id);

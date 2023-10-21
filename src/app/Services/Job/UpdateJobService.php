@@ -2,11 +2,9 @@
 
 namespace App\Services\Job;
 
-use app\Models\Job;
-
 class UpdateJobService
 {
-    public function run(array $data, object $job): object
+    public function run(array $data, object $job)
     {
         $job->update($data);
         return $job;
