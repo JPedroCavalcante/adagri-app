@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+    depends_on:
+      - app
+      - db
+
+  db:
+    image: postgres
+    container_name: postgres
+    volumes:
+      - ./postgresql/data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: adagriDB
+      POSTGRES_USER: adagri
+      POSTGRES_PASSWORD: adagri123
+
+  app:
+    container_name: adagriApplication
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/var/www
+    ports:
+      - "9000:9000"
+    working_dir: /var/www
