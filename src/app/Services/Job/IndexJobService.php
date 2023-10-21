@@ -20,7 +20,6 @@ class IndexJobService
         $search = $data['filters']['search'] ?? null;
         $salary = $data['filters']['salary'] ?? null;
         $type = $data['filters']['type'] ?? null;
-        $paginate = isset($data['paginate']) && $data['paginate'];
 
         $query = $this->job
             ->when($search, function ($query) use ($search) {
@@ -36,10 +35,6 @@ class IndexJobService
                 return $query->where('active', $data['filters']['active']);
             });
 
-        if ($paginate) {
-            return $query->paginate(20)->withQueryString();
-        }
-
-        return $query->get();
+        return $query->paginate(20)->withQueryString();
     }
 }

@@ -4,14 +4,14 @@ namespace App\Http\Requests\Applicant;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class IndexApplicantRequest extends FormRequest
+class AttachApplicantToJobRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,7 +22,7 @@ class IndexApplicantRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'filters.name' => ['nullable', 'string'],
+            //
         ];
     }
 }
