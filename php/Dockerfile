@@ -36,4 +36,9 @@ RUN apt-get install -y libpq-dev \
     && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
     && docker-php-ext-install pdo pdo_pgsql pgsql
 
-RUN chmod -R 777 storage
+RUN cd /var/www/
+RUN ls
+
+RUN echo "\e[1;33mInstalando node\e[0m"
+
+RUN apt-get install -y nodejs npm
