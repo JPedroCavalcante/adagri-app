@@ -11,7 +11,7 @@ class UserControllerTest extends TestCase
 {
     use WithFaker;
 
-    public function test_store_update_and_delete_user_in_application(): void
+    public function test_store_and_delete_user_in_application(): void
     {
         $response = $this->postJson('/api/auth/login',
             [
