@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WEB\JobController;
+use App\Http\Controllers\WEB\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +36,14 @@ Route::middleware('auth')->group(function () {
     Route::get('jobs/edit/{id}', [JobController::class, 'edit'])->name('jobs.edit');
     Route::put('jobs/update/{id}', [JobController::class, 'update'])->name('jobs.update');
     Route::delete('jobs/destroy/{id}', [JobController::class, 'destroy'])->name('jobs.destroy');
+
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+    Route::post('/users/create', [UserController::class, 'store'])->name('users.store');
+    Route::get('users/show/{id}', [UserController::class, 'show'])->name('users.show');
+    Route::get('users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('users/update/{id}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('users/destroy/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 });
 
 require __DIR__ . '/auth.php';
