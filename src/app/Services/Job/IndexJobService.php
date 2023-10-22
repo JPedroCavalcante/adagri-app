@@ -17,13 +17,13 @@ class IndexJobService
 
     public function run($data): Collection|LengthAwarePaginator
     {
-        $search = $data['filters']['search'] ?? null;
+        $name = $data['filters']['name'] ?? null;
         $salary = $data['filters']['salary'] ?? null;
         $type = $data['filters']['type'] ?? null;
 
         $query = $this->job
-            ->when($search, function ($query) use ($search) {
-                return $query->where('name', 'like', $search . '%');
+            ->when($name, function ($query) use ($name) {
+                return $query->where('name', 'like', $name . '%');
             })
             ->when($salary, function ($query) use ($salary) {
                 return $query->where('salary', 'like', $salary . '%');

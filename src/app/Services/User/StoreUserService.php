@@ -2,7 +2,9 @@
 
 namespace App\Services\User;
 
+use App\Models\Applicant;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class StoreUserService
 {
@@ -15,6 +17,15 @@ class StoreUserService
 
     public function run(array $data): object
     {
-        return $this->user->create($data);
+        $data['password'] = isset($data['password']) ? Hash::make($data['password']) : Hash::make('password');
+
+        $user = $this->user->create($data);
+
+        if ($user->type == 'applicant') {
+            Applicant::create([
+                'user_id' => $user->id,
+            ]);
+        }
+        return $user;
     }
 }

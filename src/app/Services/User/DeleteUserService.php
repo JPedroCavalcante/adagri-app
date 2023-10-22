@@ -15,7 +15,7 @@ class DeleteUserService
     {
         $user = $this->user->where('id', $id)->firstOrfail();
         if ($user->applicant) {
-            $user->applicant->delete();
+            $user->applicant()->delete();
         }
 
         return $user->delete();

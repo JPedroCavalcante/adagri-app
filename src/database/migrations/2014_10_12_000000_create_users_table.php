@@ -18,6 +18,8 @@ return new class extends Migration {
             $table->enum('type', ['admin', 'applicant'])->default('applicant');
             $table->string('password');
             $table->rememberToken();
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }

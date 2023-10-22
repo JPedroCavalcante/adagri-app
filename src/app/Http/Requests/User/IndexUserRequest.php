@@ -22,7 +22,10 @@ class IndexUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'filters.search' => ['nullable', 'string'],
+            'filters.email' => ['nullable', 'string'],
+            'filters.type' => ['nullable', 'in:admin,applicant'],
+            'paginate' => ['nullable', 'boolean'],
         ];
     }
 }
