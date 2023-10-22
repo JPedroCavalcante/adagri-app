@@ -24,21 +24,54 @@
                         </h2>
 
                         <p class="mt-1 text-sm text-gray-600">
-                            {{ $job->salary }}
+                            {{ str_replace('.', ',' ,$job->salary)  }}
                         </p>
                     </div>
+
+                    <div class="mb-6">
+                        <h2 class="text-lg font-medium text-gray-900">
+                            {{ 'Status' }}
+                        </h2>
+
+                        <p class="mt-1 text-sm text-gray-600">
+                            {{ $job->active == 1 ? 'Ativa' : 'Inativa' }}
+                        </p>
+                    </div>
+
+                    <div class="mb-6">
+                        <h2 class="text-lg font-medium text-gray-900">
+                            {{ 'Tipo' }}
+                        </h2>
+
+                        <p class="mt-1 text-sm text-gray-600">
+                            @switch($job->type)
+                                @case('clt')
+                                    CLT
+                                    @break
+                                @case('legal_person')
+                                    Pessoa Jurídica
+                                    @break
+                                @case('freelancer')
+                                    Free Lancer
+                                    @break
+                            @endswitch
+                        </p>
+                    </div>
+
                     <div class="mb-6">
                         <h2 class="text-lg font-medium text-gray-900">
                             {{ 'Criada em' }}
                         </h2>
 
                         <p class="mt-1 text-sm text-gray-600">
-                            {{ $job->created_at }}
+                            {{ Carbon\Carbon::parse($job->created_at)->format('H:i:s d/m/Y') }}
                         </p>
                     </div>
+
                     <div class="flex inline-flex w-full">
                         @if(Auth::user()->type === 'applicant' && $job->active)
-                        <a href="{{ route('jobs.index') }}" class="bg-red-500 text-white mr-1 px-4 py-2 border rounded-md">Candidatar-se</a>
+                            <a href="{{ route('jobs.index') }}"
+                               class="bg-red-500 text-white mr-1 px-4 py-2 border rounded-md">Candidatar-se</a>
                         @endif
                         <a href="{{ route('jobs.index') }}" class="bg-blue-500 text-white px-4 -mr-2 py-2 border rounded-md">Voltar</a>
                     </div>

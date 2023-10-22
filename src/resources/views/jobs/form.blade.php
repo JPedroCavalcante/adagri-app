@@ -35,16 +35,26 @@
                             </div>
 
                             <div class="flex flex-col">
-                                <x-input-label for="salary" value="Tipo"/>
+                                <x-input-label for="type" value="Tipo"/>
                                 <select class="form-control" name="type">
-                                    <option value="clt">CLT</option>
-                                    <option value="legal_person">Pessoa Jurídica</option>
-                                    <option value="freelancer">Free lancer</option>
+                                    <option value="clt" @if ($job->type == 'clt') selected @endif>CLT</option>
+                                    <option value="legal_person" @if ($job->type == 'legal_person') selected @endif>Pessoa Jurídica</option>
+                                    <option value="freelancer" @if ($job->type == 'freelancer') selected @endif>Free lancer</option>
                                 </select>
                             </div>
+
+                            <div class="flex flex-col">
+                                <x-input-label for="active" value="Status"/>
+                                <select class="form-control" name="active">
+                                    <option value="0" @if ($job->active == false) selected @endif>Inativa</option>
+                                    <option value="1" @if ($job->active == true) selected @endif>Ativa</option>
+                                </select>
+                            </div>
+
                             <div class="flex items-center gap-4">
                                 <x-primary-button>{{ __('Salvar') }}</x-primary-button>
-                                <a href="{{ route('jobs.index') }}" class="bg-blue-500 text-white px-4 -mr-2 py-2 border rounded-md">Voltar</a>
+                                <a href="{{ route('jobs.index') }}"
+                                   class="bg-blue-500 text-white px-4 -mr-2 py-2 border rounded-md">Voltar</a>
                             </div>
                         </form>
                     @else
@@ -80,7 +90,8 @@
                             </div>
                             <div class="flex items-center gap-4">
                                 <x-primary-button>{{ __('Salvar') }}</x-primary-button>
-                                <a href="{{ route('jobs.index') }}" class="bg-blue-500 text-white px-4 -mr-2 py-2 border rounded-md">Voltar</a>
+                                <a href="{{ route('jobs.index') }}"
+                                   class="bg-blue-500 text-white px-4 -mr-2 py-2 border rounded-md">Voltar</a>
                             </div>
                         </form>
                     @endif

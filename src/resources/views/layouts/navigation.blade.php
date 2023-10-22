@@ -8,6 +8,11 @@
                     <a href="{{ route('jobs.index') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                     </a>
+                    @if(Auth::user()->type == 'admin')
+                    <a href="{{ route('users.index') }}">
+                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                    </a>
+                    @endif
                 </div>
 
                 <!-- Navigation Links -->
@@ -15,6 +20,11 @@
                     <x-nav-link :href="route('jobs.index')" :active="request()->routeIs('jobs.index')">
                         {{ __('Vagas') }}
                     </x-nav-link>
+                    @if(Auth::user()->type == 'admin')
+                        <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                            {{ __('Usuários') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -35,7 +45,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                            {{ __('Meu Perfil') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -45,7 +55,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Deslogar') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -70,6 +80,9 @@
             <x-responsive-nav-link :href="route('jobs.index')" :active="request()->routeIs('jobs.index')">
                 {{ __('Vagas') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                {{ __('Usuários') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -81,7 +94,7 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    {{ __('Meu Perfil') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -91,7 +104,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Deslogar') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
