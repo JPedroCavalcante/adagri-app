@@ -25,7 +25,6 @@ class IndexUserRequest extends FormRequest
             'filters.search' => ['nullable', 'string'],
             'filters.email' => ['nullable', 'string'],
             'filters.type' => ['nullable', 'in:admin,applicant'],
-            'paginate' => ['nullable', 'boolean'],
         ];
     }
 }

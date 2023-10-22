@@ -26,7 +26,6 @@ class IndexJobRequest extends FormRequest
             'filters.salary' => ['nullable', 'numeric'],
             'filters.type' => ['nullable', 'in:clt,legal_person,freelancer'],
             'filters.active' => ['nullable', 'boolean'],
-            'paginate' => ['nullable', 'boolean'],
         ];
     }
 }

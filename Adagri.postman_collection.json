@@ -116,7 +116,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/jobs/?paginate=1",
+							"raw": "{{url}}/api/jobs/",
 							"host": [
 								"{{url}}"
 							],
@@ -149,11 +149,6 @@
 									"value": "1",
 									"description": "[Nullable] Filtrar vagas ativas ou inativas",
 									"disabled": true
-								},
-								{
-									"key": "paginate",
-									"value": "1",
-									"description": "[Required] Exibir conteúdo paginado ou não(Booleano)"
 								}
 							]
 						}
@@ -292,6 +287,32 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "attachApplicantToJob",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/jobs/3/attachApplicant",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"jobs",
+								"3",
+								"attachApplicant"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -310,7 +331,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/users/?paginate=1",
+							"raw": "{{url}}/api/users/",
 							"host": [
 								"{{url}}"
 							],
@@ -337,11 +358,6 @@
 									"value": "admin",
 									"description": "[Nullable] Filtrar por tipo de usuario ops: admin e applicant ",
 									"disabled": true
-								},
-								{
-									"key": "paginate",
-									"value": "1",
-									"description": "[Required] Exibir conteúdo paginado ou não(Booleano)"
 								}
 							]
 						}
@@ -370,7 +386,7 @@
 								},
 								{
 									"key": "email",
-									"value": "joao123@joao.com",
+									"value": "joao123@joao.com12",
 									"description": "[Required]  email de de acesso do usuario",
 									"type": "text"
 								},
@@ -501,7 +517,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "1|q7rQluYBDBWbuXmAAYhdzXlclZ6p2W6h9v7diCPO8be244ed",
+				"value": "8|g8r95FSCXzUwVT6VSvqb8gvJGLULUDn1ZPjDt1W4cb9f9b43",
 				"type": "string"
 			}
 		]

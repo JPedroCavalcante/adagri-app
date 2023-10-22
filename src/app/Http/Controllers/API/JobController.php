@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Job\IndexJobRequest;
 use App\Http\Requests\Job\StoreJobRequest;
 use App\Http\Requests\Job\UpdateJobRequest;
+use App\Http\Resources\ApplicantResource;
 use App\Http\Resources\JobResource;
 use App\Models\Job;
+use App\Services\Applicant\attachApplicantToJobService;
 use App\Services\Job\DeleteJobService;
+use App\Services\Job\FindJobByIdService;
 use App\Services\Job\IndexJobService;
 use App\Services\Job\StoreJobService;
 use App\Services\Job\UpdateJobService;
@@ -54,6 +57,17 @@ class JobController extends Controller
     {
         $response = $deleteJobService->run($job->id);
         return response($response);
+    }
+
+    public function attachApplicantToJob(
+        int                         $id,
+        findJobByIdService          $findJobByIdService,
+        attachApplicantToJobService $attachApplicantToJobService,
+    ): ApplicantResource
+    {
+        $job = $findJobByIdService->run($id);
+        $applicant = $attachApplicantToJobService->run($job->id);
+        return new ApplicantResource($applicant);
     }
 
 }
