@@ -1,0 +1,552 @@
+{
+	"info": {
+		"_postman_id": "6ae81cf9-a8c2-4236-ad96-a283fd051267",
+		"name": "Adagri",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19889897"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/auth/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "jpc.almeida2@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/auth/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Job",
+			"item": [
+				{
+					"name": "Index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/jobs/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"jobs",
+								""
+							],
+							"query": [
+								{
+									"key": "filters[name]",
+									"value": "Analista PHP 2",
+									"description": "[Nullable] Buscar médico pelo nome do mesmo",
+									"disabled": true
+								},
+								{
+									"key": "filters[salary]",
+									"value": "33",
+									"description": "[Nullable] Filtrar vagas por salario",
+									"disabled": true
+								},
+								{
+									"key": "filters[type]",
+									"value": "freelancer",
+									"description": "[Nullable] Filtrar por tipo de vaga, ops: clt , legal_person , freelancer",
+									"disabled": true
+								},
+								{
+									"key": "filters[active]",
+									"value": "1",
+									"description": "[Nullable] Filtrar vagas ativas ou inativas",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Analista Java",
+									"description": "[Required] Nome da vaga",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "clt",
+									"description": "[Required] Tipo de contratacao, ops: clt , legal_person , freelancer",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "200",
+									"description": "[Required] Salario apresentado",
+									"type": "text"
+								},
+								{
+									"key": "active",
+									"value": "1",
+									"description": "[Nullable] Ativo ou inativo",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/jobs/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"jobs",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Analista Java 123",
+									"description": "[Required] Nome da vaga",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "clt",
+									"description": "[Required] Tipo de contratacao, ops: clt , legal_person , freelancer",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "200",
+									"description": "[Required] Salario apresentado",
+									"type": "text"
+								},
+								{
+									"key": "active",
+									"value": "1",
+									"description": "[Nullable] Ativo ou inativo",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/jobs/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"jobs",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/jobs/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"jobs",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "attachApplicantToJob",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/jobs/3/attachApplicant",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"jobs",
+								"3",
+								"attachApplicant"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/users/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "filters[search]",
+									"value": "",
+									"description": "[Nullable] Buscar usuário pelo nome do mesmo",
+									"disabled": true
+								},
+								{
+									"key": "filters[email]",
+									"value": "jpc.almeida2@gmail.com",
+									"description": "[Nullable] Buscar usuário pelo email do mesmo",
+									"disabled": true
+								},
+								{
+									"key": "filters[type]",
+									"value": "admin",
+									"description": "[Nullable] Filtrar por tipo de usuario ops: admin e applicant ",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "João",
+									"description": "[Required] Nome do usuario",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "joao123@joao.com12",
+									"description": "[Required]  email de de acesso do usuario",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"description": "[Nullable] senha do usuario",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "12345678",
+									"description": "[Nullable] confirmacao de senha do usuario",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "applicant",
+									"description": "[Required]  tipo de usuario, ops: admin ou applicant",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/users/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Joao",
+									"description": "[Required] Nome do usuario",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "joao@joao123",
+									"description": "[Required]  email de de acesso do usuario",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "applicant",
+									"description": "[Nullable] senha do usuario",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"description": "[Nullable] confirmacao de senha do usuario",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "12345678",
+									"description": "[Required]  tipo de usuario, ops: admin ou applicant",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/users/4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/users/6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "8|g8r95FSCXzUwVT6VSvqb8gvJGLULUDn1ZPjDt1W4cb9f9b43",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "127.0.0.1:8080",
+			"type": "string"
+		}
+	]
+}

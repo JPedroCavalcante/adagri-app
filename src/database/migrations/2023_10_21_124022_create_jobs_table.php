@@ -16,6 +16,7 @@ return new class extends Migration
 
             $table->string('name');
             $table->boolean('active')->default(true);
+            $table->decimal('salary', 8, 2)->default(0);
             $table->enum('type', ['clt', 'legal_person', 'freelancer']);
 
             $table->softDeletes();

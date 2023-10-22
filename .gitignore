@@ -1,1 +1,4 @@
 postgresql
+.idea
+/.idea/
+/vendor/
