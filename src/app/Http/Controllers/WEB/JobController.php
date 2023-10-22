@@ -7,6 +7,7 @@ use App\Http\Requests\Job\IndexJobRequest;
 use App\Http\Requests\Job\StoreJobRequest;
 use App\Http\Requests\Job\UpdateJobRequest;
 use App\Models\Job;
+use App\Services\Applicant\attachApplicantToJobService;
 use App\Services\Job\DeleteJobService;
 use App\Services\Job\IndexJobService;
 use App\Services\Job\FindJobByIdService;
@@ -51,7 +52,7 @@ class JobController extends Controller
     {
         $data = $storeJobRequest->validated();
         $storeJobService->run($data);
-        return redirect('/jobs')->with('msg', 'Vaga criada!');
+        return redirect('/jobs');
     }
 
     public function edit(
@@ -84,6 +85,19 @@ class JobController extends Controller
     ): Application|Redirector|RedirectResponse|\Illuminate\Contracts\Foundation\Application
     {
         $deleteJobService->run($id);
-        return redirect('/jobs')->with('msg', 'Vaga excluída!');
+        return redirect('/jobs');
+    }
+
+    public function attachApplicantToJob(
+        int                         $id,
+        findJobByIdService          $findJobByIdService,
+        attachApplicantToJobService $attachApplicantToJobService,
+    )
+    {
+        $job = $findJobByIdService->run($id);
+        $attachApplicantToJobService->run($job->id);
+        return response()->view('jobs.show', [
+            'job' => $job,
+        ]);
     }
 }

@@ -1,7 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{-- Use 'Edit' for edit mode and create for non-edit/create mode --}}
             {{ isset($job) ? 'Editar' : 'Criar' }} Vaga
         </h2>
     </x-slot>
@@ -10,12 +9,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    {{-- don't forget to add multipart/form-data so we can accept file in our form --}}
                     @if(isset($job))
                         <form method="post" action="{{route('jobs.update', $job->id)}}" class="mt-6 space-y-6"
                               enctype="multipart/form-data">
-                            @csrf
-                            {{-- add @method('put') for edit mode --}}
+                            @csrf]
                             @isset($job)
                                 @method('put')
                             @endisset
@@ -61,7 +58,6 @@
                         <form method="post" action="{{ route('jobs.store') }}" class="mt-6 space-y-6"
                               enctype="multipart/form-data">
                             @csrf
-                            {{-- add @method('put') for edit mode --}}
                             @isset($job)
                                 @method('put')
                             @endisset

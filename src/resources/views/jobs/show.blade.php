@@ -69,11 +69,19 @@
                     </div>
 
                     <div class="flex inline-flex w-full">
-                        @if(Auth::user()->type === 'applicant' && $job->active)
-                            <a href="{{ route('jobs.index') }}"
-                               class="bg-red-500 text-white mr-1 px-4 py-2 border rounded-md">Candidatar-se</a>
+                        @if(
+                        Auth::user()->type === 'applicant' && $job->active &&
+                        !Auth::user()->applicant->jobs->contains('id', $job->id)
+                        )
+                            <form method="post" action="{{route('jobs.attachApplicant', $job->id)}}"
+                                  enctype="multipart/form-data">
+                                @csrf
+                                @method('post')
+                                <x-primary-button>{{ __('Candidatar-se') }}</x-primary-button>
+                            </form>
                         @endif
-                        <a href="{{ route('jobs.index') }}" class="bg-blue-500 text-white px-4 -mr-2 py-2 border rounded-md">Voltar</a>
+                        <a href="{{ route('jobs.index') }}"
+                           class="bg-blue-500 text-white px-4 ml-3 -mr-2 h-9 py-1 border rounded-md">Voltar</a>
                     </div>
                 </div>
             </div>

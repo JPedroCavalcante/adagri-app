@@ -2,11 +2,15 @@
 
 namespace App\Services\Applicant;
 
+use App\Models\Applicant;
+use Illuminate\Support\Facades\Auth;
+
 class attachApplicantToJobService
 {
-    public function run(array $data, object $applicant): object
+    public function run(int $jobId): object
     {
-        $applicant->jobs()->sync($data['jobs']);
+        $applicant = Auth::user()->applicant;
+        $applicant->jobs()->sync($jobId);
         $applicant->load('jobs');
         return $applicant;
     }
