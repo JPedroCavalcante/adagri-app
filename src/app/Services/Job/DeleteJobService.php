@@ -14,7 +14,6 @@ class DeleteJobService
     public function run(int $id)
     {
         $job = $this->job->where('id', $id)->firstOrfail();
-
         return $job->delete();
     }
 

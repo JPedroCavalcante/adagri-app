@@ -81,7 +81,7 @@
                             </form>
                         @endif
                         <a href="{{ route('jobs.index') }}"
-                           class="bg-blue-500 text-white px-4 ml-3 -mr-2 h-9 py-1 border rounded-md">Voltar</a>
+                           class="bg-blue-500 text-white px-4 -mr-2 py-2 border rounded-md">Voltar</a>
                     </div>
                 </div>
             </div>

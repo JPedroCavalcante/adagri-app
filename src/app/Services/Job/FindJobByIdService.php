@@ -4,7 +4,7 @@ namespace App\Services\Job;
 
 use App\Models\Job;
 
-class findJobByIdService
+class FindJobByIdService
 {
     public function run(int $id)
     {

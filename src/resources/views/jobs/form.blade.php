@@ -12,7 +12,7 @@
                     @if(isset($job))
                         <form method="post" action="{{route('jobs.update', $job->id)}}" class="mt-6 space-y-6"
                               enctype="multipart/form-data">
-                            @csrf]
+                            @csrf
                             @isset($job)
                                 @method('put')
                             @endisset

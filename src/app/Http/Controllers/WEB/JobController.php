@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Job\IndexJobRequest;
 use App\Http\Requests\Job\StoreJobRequest;
 use App\Http\Requests\Job\UpdateJobRequest;
-use App\Models\Job;
 use App\Services\Applicant\attachApplicantToJobService;
 use App\Services\Job\DeleteJobService;
 use App\Services\Job\IndexJobService;
@@ -32,7 +31,7 @@ class JobController extends Controller
         return view('jobs.index', compact('jobs'));
     }
 
-    public function show(int $id, FindJobByIdService $findJobByIdService)
+    public function show(int $id, FindJobByIdService $findJobByIdService): Response
     {
         $job = $findJobByIdService->run($id);
         return response()->view('jobs.show', [

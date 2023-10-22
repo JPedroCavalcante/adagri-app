@@ -60,7 +60,7 @@
                                             @csrf
                                             @method('delete')
                                             <button
-                                                class="border border-red-500 hover:bg-red-500 hover:text-white px-4 py-4 rounded-md">
+                                                class="border border-red-500 hover:bg-red-500 hover:text-white px-4 px-4 py-2 rounded-md">
                                                 Excluir
                                             </button>
                                         </form>

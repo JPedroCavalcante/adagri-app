@@ -8,11 +8,6 @@
                     <a href="{{ route('jobs.index') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                     </a>
-                    @if(Auth::user()->type == 'admin')
-                    <a href="{{ route('users.index') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                    </a>
-                    @endif
                 </div>
 
                 <!-- Navigation Links -->
