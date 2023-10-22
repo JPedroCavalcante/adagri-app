@@ -33,7 +33,7 @@
                             <div class="flex flex-col">
                                 <x-input-label for="type" value="Tipo"/>
                                 <select class="form-control" name="type">
-                                    <option value="clt" @if ($user->type == 'admin') selected @endif>Admin</option>
+                                    <option value="admin" @if ($user->type == 'admin') selected @endif>Admin</option>
                                     <option value="applicant" @if ($user->type == 'applicant') selected @endif>Candidato</option>
                                 </select>
                             </div>

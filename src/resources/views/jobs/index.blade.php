@@ -70,6 +70,9 @@
                         @endforeach
                         </tbody>
                     </table>
+                    <div class="mt-4">
+                    {{ $jobs->links() }}
+                    </div>
                 </div>
             </div>
         </div>

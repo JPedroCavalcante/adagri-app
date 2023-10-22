@@ -9,7 +9,6 @@ use App\Http\Requests\User\UpdateUserRequest;
 use App\Services\User\DeleteUserService;
 use App\Services\User\FindUserByIdService;
 use App\Services\User\IndexUserService;
-use App\Services\User\StoreUserService;
 use App\Services\User\UpdateUserService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -44,7 +43,7 @@ class UserController extends Controller
     }
 
     public function edit(
-        int                $id,
+        int                 $id,
         FindUserByIdService $findUserByIdService
     ): Response
     {
@@ -59,16 +58,16 @@ class UserController extends Controller
         UpdateUserRequest $updateUserRequest,
         UpdateUserService $updateUserService,
         findUserByIdService $findUserByIdService,
-    ): Factory|\Illuminate\Foundation\Application|View|Application
+    ): string
     {
         $user = $findUserByIdService->run($id);
         $data = $updateUserRequest->validated();
         $user = $updateUserService->run($data, $user);
-        return view('users.form', ['user' => $user]);
+        return redirect()->route('users.edit', $user->id);
     }
 
     public function destroy(
-        int              $id,
+        int               $id,
         DeleteUserService $deleteUserService
     ): \Illuminate\Foundation\Application|Redirector|Application|RedirectResponse
     {

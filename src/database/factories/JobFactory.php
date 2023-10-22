@@ -19,7 +19,7 @@ class JobFactory extends Factory
         return [
             'name' => $this->faker->domainName(),
             'type' => $this->faker->randomElement(['clt', 'legal_person', 'freelancer']),
-            'salary' => $this->faker->randomNumber(),
+            'salary' => $this->faker->numberBetween(0,1000000),
             'active' => $this->faker->randomElement([true, false]),
         ];
     }

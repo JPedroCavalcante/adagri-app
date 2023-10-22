@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Job;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -36,5 +36,7 @@ class JobSeeder extends Seeder
                 'created_at' => now(),
             ],
         ]);
+
+        Job::factory()->count(50)->create();
     }
 }

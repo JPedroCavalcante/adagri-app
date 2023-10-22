@@ -30,7 +30,8 @@ class UpdateUserRequest extends FormRequest
                 'string',
                 'email',
                 Rule::unique('users', 'email')->ignore(User::where('id', $this->route()->id)->first()),
-            ]
+            ],
+            'type' => ['required', 'in:admin,applicant'],
         ];
     }
 }
