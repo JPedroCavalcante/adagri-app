@@ -10,8 +10,7 @@
 
 ## Rodando algum comando dentro do container da aplicação
 
-1. ```cd src```
-2. ```docker-compose exec app {comando}```
+ ```docker-compose exec app {comando}```
 
 ## Erros Possíveis apresentados durante o desenvolvimento
  ### Permissão negada na pasta storage
